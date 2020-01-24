@@ -56,5 +56,21 @@ function ejecutar3(){
     console.log("Después de eliminar: "+array);
 }
 function ejecutar4(){
-    alert("Ejercicio 4");
+    // Programa que recibe un arreglo y busca el número más alto, y lanza excepciones si lo recibido no es un arreglo y si no se encuentran valores numéricos.
+    (function masAlto(array) {
+        if(!Array.isArray(array)) {
+            throw new Error('No es arreglo');
+        }
+        let mayor = -Infinity;
+        array.forEach((elemento) => {
+        if (elemento > mayor) {
+          mayor = elemento;
+        }
+      })
+      if (mayor < -999999999999) {
+        throw new Error('no es un valor numerico');
+      }
+      console.log('el mayor es', mayor);
+    })(['a']);
+
 }
