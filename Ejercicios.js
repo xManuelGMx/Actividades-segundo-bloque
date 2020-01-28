@@ -74,3 +74,64 @@ function ejecutar4(){
     })(['a']);
 
 }
+function ejecutar5(){
+    // nombre,apellido,email
+    class User{
+        constructor(nombre, apellido, email){
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.email = email;
+        }
+    }
+    let usuario1 = new User(prompt("Ingrese el nombre del usuario"), prompt("Ingrese el apellido del usuario"), prompt("Ingrese el email del usuario"))
+    alert("Nombre del usuario: "+usuario1.nombre+"\nApellido del usuario: "+usuario1.apellido+"\nEmail del usuario: "+usuario1.email);
+}
+function ejecutar6(){
+    //Lo mismo del anterior :)
+}
+function ejecutar7(){
+    class User{
+    constructor(nombre, apellido, email, edad){
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.email = email;
+            this.edad = edad
+        }
+        is_adult = function() {
+            if(this.edad >= 18){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        get_full_name = function() {
+            return this.nombre+" "+this.apellido;
+        }
+    }
+    let usuario1 = new User(prompt("Ingrese el nombre del usuario"), prompt("Ingrese el apellido del usuario"), prompt("Ingrese el email del usuario"), +prompt("Ingrese la edad del usuario: "))
+    alert("Nombre del usuario: "+usuario1.get_full_name()+"\nEmail del usuario: "+usuario1.email+"\nEs mayor de edad: "+usuario1.is_adult());
+    // alert(`Nombre: ${usuario1.get_full_name()}`)
+}
+function ejecutar8() {
+    class Perro{
+        constructor(raza, nombre, peso, edad){
+            this.raza = raza;
+            this.nombre = nombre;
+            this.peso = peso;
+            this.edad = edad;
+        }
+    }
+
+    let Perros = [];
+
+    do{
+        Perros.push(new Perro(prompt("Ingrese la raza del perro: "), prompt("Ingrese el nombre del perro: "), prompt("Ingrese el peso del perro: "), prompt("Ingrese la edad del perro: ")))
+        Perros.forEach(element => {
+            if(Perros[element].raza === "Stop"){
+                Perros.pop();
+            }
+            
+        });
+    }while(Perros[0].raza !== "Stop")
+    console.log(Perros)
+}
