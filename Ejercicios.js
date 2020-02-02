@@ -173,7 +173,7 @@ function ejecutar9() {
     }
     function usuario() {
         do{
-            opc = prompt("Ingrese uno de los siguientes numerales: \na. Ingresar usuario\nb. Mostrar lista de usuarios\nc. Atrás").toLowerCase();
+            opc = prompt("Ingrese uno de los siguientes numerales: \na. Ingresar usuario\nb. Mostrar lista de usuarios\nc. Modificar usuario\nd. Atrás").toLowerCase();
             switch(opc){
                 case 'a':
                     usuarios.push(crearUsuario());
@@ -182,13 +182,16 @@ function ejecutar9() {
                     mostrarUsuarios();
                     break;
                 case 'c':
+                    modificarUsuarios();
+                    break;
+                case 'd':
                     alert("Atrás");
                     break;
                 default:
                     alert("Ingresó una opción no valida!!");
                     break;
             }
-        }while(opc !== 'c')
+        }while(opc !== 'd')
     }
     function crearUsuario() {
         let nombre = prompt("Ingrese el nombre: ");
@@ -205,9 +208,37 @@ function ejecutar9() {
         }
         alert(mensaje);
     }
+    function modificarUsuarios() {
+        do{
+            opc = prompt("Ingrese uno de los siguientes numerales:\na. Seleccionar usuario\nb. Modificar nombre\nc. Modificar apellido\nd. Modificar email\ne. Modificar teléfono\nf. Atrás").toLowerCase();
+            switch(opc){
+                case 'a':
+                    seleccionarUsuario();
+                    break;
+                case 'b':
+                    usuarioSeleccionado.nombre = prompt(`Nuevo nombre del usuario:`);
+                    break;
+                case 'c':
+                    usuarioSeleccionado.apellido = prompt(`Nuevo apellido del usuario:`);
+                    break;
+                case 'd':
+                    usuarioSeleccionado.email = prompt(`Nuevo email del usuario:`);
+                    break;
+                case 'e':
+                    usuarioSeleccionado.telefono = +prompt(`Nuevo telefono del usuario:`);
+                    break;
+                case 'f':
+                    alert("Atrás");
+                    break;
+                default:
+                    alert("Ingresó una opción no valida!!");
+                    break;
+            }
+        }while(opc !== 'f')
+    }
     function producto() {
         do{
-            opc = prompt("Ingrese uno de los siguientes numerales: \na. Ingreso de productos\nb. Listado de productos\nc. Atrás").toLowerCase();
+            opc = prompt("Ingrese uno de los siguientes numerales: \na. Ingreso de productos\nb. Listado de productos\nc. Modificar producto\nd. Atrás").toLowerCase();
             switch(opc){
                 case 'a':
                     productos.push(ingresarProducto());
@@ -216,13 +247,16 @@ function ejecutar9() {
                     mostrarProductos();
                     break;
                 case 'c':
+                    modificarProducto();
+                    break;
+                case 'd':
                     alert("Atrás");
                     break;
                 default:
                     alert("Ingresó una opción no valida!!");
                     break;
             }
-        }while(opc !== 'c')
+        }while(opc !== 'd')
     }
     function ingresarProducto() {
         let nombre = prompt("Ingrese el nombre: ");
@@ -237,24 +271,42 @@ function ejecutar9() {
         }
         alert(`Productos:\n${mensaje}`);
     }
+    function modificarProducto() {
+        do{
+            opc = prompt("Ingrese uno de los siguientes numerales:\na. Seleccionar producto\nb. Modificar nombre\nc. Modificar precio\nd. Atrás").toLowerCase();
+            switch(opc){
+                case 'a':
+                    seleccionarProducto();
+                    break;
+                case 'b':
+                    productoSeleccionado.nombre = prompt(`Nuevo nombre del producto:`);
+                    break;
+                case 'c':
+                    productoSeleccionado.precio = prompt(`Nuevo precio del producto:`);
+                    break;
+                case 'd':
+                    alert("Atrás");
+                    break;
+                default:
+                    alert("Ingresó una opción no valida!!");
+                    break;
+            }
+        }while(opc !== 'd')
+    }
     function pedidos() {
         do{
             opc = prompt("Ingrese uno de los siguientes numerales: \na. Usuario que va a realizar la compra\nb. Producto que desea\nc. Confirmacion de compra\nd. Listado de todos los pedidos\ne. Atrás").toLowerCase();
             switch(opc){
                 case 'a':
-                    alert("Usuario que va a realizar la compra");
                     seleccionarUsuario();
                     break;
                 case 'b':
-                    alert("Producto que desea")
                     seleccionarProducto();
                     break;
                 case 'c':
-                    alert("Confirmacion de compra");
                     confirmarPedido();
                     break;
                 case 'd':
-                    alert("Listado de todos los pedidos");
                     mostrarPedidos();
                     break;
                 case 'e':
@@ -271,7 +323,7 @@ function ejecutar9() {
         for (let i = 0; i < usuarios.length; i++) {
             mensaje += (`Usuario ${[(i+1)]}: ${usuarios[i].nombre} ${usuarios[i].apellido}\n\n`);
         }
-        usuarioSeleccionado = usuarios[prompt(`Usuarios:\n${mensaje}`) - 1];
+        usuarioSeleccionado = usuarios[+prompt(`Usuarios:\n${mensaje}`) - 1];
         alert(`El usuario seleccionado es ${usuarioSeleccionado.nombre} ${usuarioSeleccionado.apellido}`);
     }
     function seleccionarProducto() {
@@ -279,7 +331,7 @@ function ejecutar9() {
         for (let i = 0; i < productos.length; i++) {
             mensaje += (`Producto ${[(i+1)]}\nNombre: ${productos[i].nombre}\nPrecio: $${productos[i].precio}\n\n`);
         }
-        productoSeleccionado = productos[prompt(`Productos:\n${mensaje}`) - 1];
+        productoSeleccionado = productos[+prompt(`Productos:\n${mensaje}`) - 1];
         alert(`El producto seleccionado es ${productoSeleccionado.nombre} ($${productoSeleccionado.precio})`);
     }
     function confirmarPedido() {
