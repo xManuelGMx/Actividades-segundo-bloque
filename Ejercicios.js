@@ -376,3 +376,39 @@ function ejecutar9() {
         }
     }while(opc !== 4)
 }
+// --Callbacks-----------------------------------------------
+function ejecutar10(){
+    let calc = function (num, callback) {
+        console.log("Hola calc");
+        if (typeof callback !== 'function') {
+            console.log("Error");
+        }else{
+            console.log(callback(num));
+        }
+    }
+    let callback = function(){console.log("Hola callback")}
+    let cuadrado = function(num){ return num*num; }
+    let raiz = function(num){ return Math.sqrt(num); }
+    // calc(2, cuadrado);
+//     calc(3,(num) => {
+//         for (let i = 2; i < Math.f; i++) {
+//             const eleme2t =           
+//         Math.f}
+//     });
+}
+// --Promesas-----------------------------------------------
+function ejecutar11() {
+    // Ej1
+    let promesa = new Promise(res => {setTimeout(res,2000)}).then(console.log)
+    // Ej2
+    new Promise((res,rej) => {setTimeout(rej,1000)}).catch(console.error);
+    // Ej3
+    function generar(){
+        let n = Math.round(Math.random()*100);
+        if(n % 2 === 0){
+            resolve('par'+n)
+        }
+    }
+    // Ej4
+    // Lo mandó Diego por Slack
+}
